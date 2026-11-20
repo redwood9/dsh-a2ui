@@ -1,0 +1,58 @@
+{
+  "name": "dsh-a2ui",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 实时生成 UI 插件：模型输出 A2UI v0.9 协议流（Kuikly catalog 超集），Web / 桌面端对话内增量渲染原生 Web 组件，支持 Action 回传。",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "src/",
+    "catalog/",
+    "docs/",
+    "README.md",
+    "README_cn.md"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-api-workspace-controller",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-api-session-controller"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "*",
+    "@deepseek-ai/schemastery": "*"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "a2ui",
+    "kuikly",
+    "generative-ui",
+    "deepseek-harness"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build-client.mjs",
+    "test": "node test/verify-protocol.mjs && node test/verify-host.mjs && node test/simulate-client.mjs"
+  }
+}

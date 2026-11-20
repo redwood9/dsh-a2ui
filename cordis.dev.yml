@@ -1,0 +1,5 @@
+# 本地开发用：在本目录执行
+#   pnpm dsh web --patch ./cordis.dev.yml
+- insert:
+    - id: dsh-a2ui
+      name: ./index.js
